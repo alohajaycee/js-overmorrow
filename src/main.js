@@ -1,6 +1,6 @@
 const overmorrow = {
     
-    test: () => {
+    test: (start =  "07-28-2019", end = "09-07-2019") => {
         let schedules = [
             {
                 "title": "Every 1 day",
@@ -32,9 +32,7 @@ const overmorrow = {
             },
         ];
         
-        let collection = overmorrow.abyss(schedules, "07-28-2019", "09-07-2019");
-
-        // console.log(collection);
+        let collection = overmorrow.abyss(schedules, start, end);
 
         return collection;
     },
@@ -70,17 +68,17 @@ const overmorrow = {
             // this schedule doesn't really exist but can be seen in the future possible occurence
             let phantom_schedule = {
                 ...schedule,
-                date_start: moment(_schedule.start).format('MM-DD-YYYY'),
-                date_stop: moment(_schedule.stop).format('MM-DD-YYYY')
+                date_start: moment(_schedule.start),
+                date_stop: moment(_schedule.stop)
             }
             
             while(moment(phantom_schedule.date_start).isSameOrBefore(_date_stop))
             {
                 collection.push(Object.assign({},phantom_schedule));
 
-                phantom_schedule.date_start  = moment(phantom_schedule.date_start).add(frequency, frequency_unit).format('MM-DD-YYYY');
+                phantom_schedule.date_start  = moment(phantom_schedule.date_start).add(frequency, frequency_unit);
 
-                phantom_schedule.date_stop   = moment(phantom_schedule.date_stop).add(frequency, frequency_unit).format('MM-DD-YYYY');
+                phantom_schedule.date_stop   = moment(phantom_schedule.date_stop).add(frequency, frequency_unit);
             }
         });
 
