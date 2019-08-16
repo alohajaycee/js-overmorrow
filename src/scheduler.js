@@ -61,7 +61,7 @@ export const scheduler = function(schedules, date_start, date_end)
                 color: '#cecece',
                 link:  'maintenance/' + schedule.schedulable_id,
                 data:   schedule,
-                type: 'm'
+                type:   'm'
             }
 
             // Repeat recursively until the calendar end is hit
