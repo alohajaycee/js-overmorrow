@@ -1,3 +1,10 @@
+import Moment from 'moment';
+
+/**
+ * @param {*} schedules the list of all schedules
+ * @param {*} date_start start date of calendar view
+ * @param {*} date_end end date of calendar view
+ */
 export const scheduler = function(schedules, date_start, date_end)
 {
     let collection = [];
